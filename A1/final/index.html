@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Customer From</title>
+</head>
+<body>
+
+	<h1>Customer Details</h1>
+	<form>
+		<fieldset>
+		<div>
+		<label>Customer Name:</label>
+		<input type="text" name="name" placeholder="Enter name" /required><br>
+		</div>
+		<div>
+		<label>Customer Address:</label>
+		<input type="text" name="address" placeholder="Enter address"><br>
+		</div>
+		<div>
+		<label>Gender:</label>
+		<input type="radio" name="gender" value="male">Male
+		<input type="radio" name="gender" value="female">Female<br>
+	</div>
+	<div>
+		<label>Languages:</label><br>
+		<input type="checkbox" name="language" value="English">English<br>
+		<input type="checkbox" name="language" value="Hindi">Hindi<br>
+		<input type="checkbox" name="language" value="Marathi">Marathi<br>
+		<input type="checkbox" name="language" value="Spanish">Spanish<br>
+	</div>
+	<div>
+		<label>City:</label>
+		<input type="text" name="city" placeholder="Enter city"><br>
+	</div>
+	<div>
+		<button onclick="xmlParse()" type="button">Submit</button><br>
+		<input type="reset" name="reset">
+	</div>
+</fieldset>
+	</form>
+
+
+<script>
+function xmlParse(){
+var parser, xmlDoc;
+var text = "<?xml version = '1.0' encoding='UTF-8'?>"+ "<customer>" +
+"<name>Default</name>" +
+"<address>Default</address>" +
+"<gender>Default</gender>" +
+"<language>Default</language>" +
+"<city>Default</city>" + "</customer>";
+
+parser = new DOMParser();//It defines an interface that enables programs to access and update the style, structure, and contents of XML documents
+xmlDoc = parser.parseFromString(text,"text/xml");
+xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue = document.getElementsByName("name")[0].value;
+xmlDoc.getElementsByTagName("address")[0].childNodes[0].nodeValue = document.getElementsByName("address")[0].value;
+xmlDoc.getElementsByTagName("gender")[0].childNodes[0].nodeValue = document.getElementsByName("gender")[0].value;
+xmlDoc.getElementsByTagName("language")[0].childNodes[0].nodeValue = document.getElementsByName("language")[0].value;
+xmlDoc.getElementsByTagName("city")[0].childNodes[0].nodeValue = document.getElementsByName("city")[0].value;
+var xmlString = new XMLSerializer().serializeToString(xmlDoc);//The XMLSerializer interface provides the serializeToString() method to construct an XML string representing a DOM tree.
+alert(xmlString);
+download("shubham.xml", xmlString);
+}
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/xml;charset=utf-8,' + text);
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  //	document.body.removeChild(element);
+}
+</script>
+
+
+</body>
+</html>

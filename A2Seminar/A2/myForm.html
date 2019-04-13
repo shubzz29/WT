@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="myStyle.css">
+    <title>Seminar Registration</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="myJquery.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <h1>Welcome to TechCon Seminar Registration</h1>
+    <h2>Please fill the form below to proceed</h2>
+    <form class="myForm" action="" method="post">
+      <fieldset>
+        <legend>Personal Information</legend>
+        First Name <input type="text" name="fname" id="fname" value="" required><br>
+        Middle Name <input type="text" name="mname" id="mname" value="" ><br>
+        Last name <input type="text" name="lname" id="lname" value="" required><br>
+        E-mail address <input type="text" name="email" id="email" value="" required><br>
+        Country <input type="text" name="country" value="" id="country" required><br>
+      </fieldset>
+      <fieldset>
+        <legend>Professional Information</legend>
+        Qualification <select class="qualification" name="qualification">
+          <option value="student" selected="true">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="professional">Professional</option>
+          <option value="representative">Representative</option>
+        </select><br>
+        <div class="expectationWrapper">
+          What do you expect from this seminar ? <br>
+          <input type="textarea" name="expectation" value=""><br>
+        </div>
+      </fieldset>
+      <div class="submitWrapper">
+        <input type="submit" name="submit" id="submit" value="Submit">
+      </div>
+    </form>
+  </body>
+</html>
